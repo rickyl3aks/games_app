@@ -1,0 +1,21 @@
+.container {
+  display: grid;
+  margin: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-gap: 1rem;
+}
+
+.items {
+  margin: auto;
+  background-color: gray;
+  border-radius: 10px;
+}
+
+.infos {
+  margin-left: 0.5rem;
+}
+
+.name {
+  color: whitesmoke;
+  font-weight: bold;
+}
