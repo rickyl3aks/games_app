@@ -7,8 +7,16 @@
 
 .items {
   margin: auto;
-  background-color: gray;
-  border-radius: 10px;
+  border-radius: 0.5rem;
+  transition: 1s;
+}
+
+.items:hover {
+  -ms-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+  cursor: pointer;
 }
 
 .infos {
