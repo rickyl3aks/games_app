@@ -22,7 +22,7 @@ export const Games = () => {
     return <div>There has been an error</div>;
   }
 
-  const openInfo = (id: any) => {
+  const openInfo = (id: string) => {
     setOpen(id);
   };
 
@@ -40,11 +40,7 @@ export const Games = () => {
             className="items"
             onMouseOver={() => openInfo(game.id)}
           >
-            <Images
-              background={game.background_image}
-              name={game.name}
-              screenshots={game.short_screenshots}
-            />
+            <Images screenshots={game.short_screenshots} />
             <div className="infos">
               <Platforms game={game} />
               <p className="name">{game.name}</p>
