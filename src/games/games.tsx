@@ -7,7 +7,7 @@ import { Infos } from "../infos/infos";
 import "./games.css";
 
 export const Games = () => {
-  const [open, setOpen] = useState("");
+  const [open, setOpen] = useState<string>("");
   const { data, isLoading, isError } = GameApi();
 
   if (isLoading) {
@@ -26,6 +26,10 @@ export const Games = () => {
     setOpen(id);
   };
 
+  const closeInfo = () => {
+    setOpen("");
+  };
+
   return (
     <div className="container">
       {data.results
@@ -39,6 +43,7 @@ export const Games = () => {
             style={{ backgroundColor: `#${game.dominant_color}`, width: 300 }}
             className="items"
             onMouseOver={() => openInfo(game.id)}
+            onMouseOut={() => closeInfo()}
           >
             <Images screenshots={game.short_screenshots} />
             <div className="infos">
