@@ -2,3 +2,9 @@ p {
   display: flex;
   justify-content: space-between;
 }
+
+.items {
+  margin: auto;
+  border-radius: 0.5rem;
+  transition: 1s;
+}

@@ -2,13 +2,20 @@
   display: grid;
   margin: 0.5rem;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  grid-gap: 1rem;
+  grid-gap: 2rem;
+}
+
+.title {
+  text-align: center;
+  color: white;
 }
 
 .items {
   margin: auto;
   border-radius: 0.5rem;
   transition: 1s;
+  width: 300px;
+  background-color: black;
 }
 
 .items:hover {
