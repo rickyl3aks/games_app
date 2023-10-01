@@ -34,3 +34,63 @@
   color: whitesmoke;
   font-weight: bold;
 }
+
+/* arrow */
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  width: 15rem;
+  margin: 2rem auto;
+}
+
+.arrow {
+  cursor: pointer;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  border: solid 2px #999;
+  border-radius: 100%;
+  z-index: 1;
+  transition: all 0.2s linear;
+  &:hover {
+    border: solid 4px #777;
+    &:after,
+    &:before {
+      background: #777;
+    }
+  }
+}
+
+.previous::before,
+.previous::after,
+.next::before,
+.next::after {
+  content: "";
+  position: absolute;
+  width: 35%;
+  height: 10%;
+  background: #999;
+  z-index: 2;
+  transition: all 0.2s linear;
+}
+
+.previous::before {
+  top: 60%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.previous::after {
+  top: 42%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.next::before {
+  top: 60%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.next::after {
+  top: 42%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}

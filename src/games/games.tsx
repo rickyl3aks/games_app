@@ -15,8 +15,10 @@ export const Games = () => {
   return (
     <div>
       <h1 className="title">Game app</h1>
-      <button onClick={() => setCount(count === 0 ? count - 1 : 1)}>previous</button>
-      <button onClick={() => setCount(count + 1)}>next</button>
+      <div className="btn-container">
+        <button onClick={() => setCount(count === 1 ? 1 : count - 1)} className="arrow previous"></button>
+        <button onClick={() => setCount(count + 1)} className="arrow next"></button>
+      </div>
       {isLoading ? (
         <h1>Loading...</h1>
       ) : (
