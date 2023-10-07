@@ -44,7 +44,6 @@ export const Images = ({ screenshots }: games) => {
                   width: 300,
                   height: 180,
                   borderRadius: ".5rem .5rem 0rem 0rem",
-
                   display: "inline-block",
                 }}
               />

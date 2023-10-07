@@ -10,29 +10,8 @@
   color: white;
 }
 
-.items {
-  margin: auto;
-  border-radius: 0.5rem;
-  transition: 1s;
-  width: 300px;
-  background-color: black;
-}
-
-.items:hover {
-  -ms-transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-  transition: transform 0.5s ease;
-  cursor: pointer;
-}
-
 .infos {
   margin-left: 0.5rem;
-}
-
-.name {
-  color: whitesmoke;
-  font-weight: bold;
 }
 
 /* arrow */

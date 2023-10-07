@@ -1,0 +1,55 @@
+.infos {
+  margin-left: 0.5rem;
+}
+
+.imgContainer {
+  overflow: hidden;
+  height: 180px;
+  margin-bottom: 0.5rem;
+}
+
+.img {
+  transition: transform 0.5s ease;
+}
+
+.img:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.items {
+  margin: auto;
+  border-radius: 0.5rem;
+  transition: 1s;
+  width: 300px;
+  overflow: hidden;
+  background-color: black;
+}
+
+.items:hover {
+  cursor: pointer;
+}
+
+.name {
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.dialog {
+  width: max-content;
+  padding-top: 3rem;
+  backdrop-filter: blur(5px);
+  border-radius: 0.5rem;
+  border: transparent;
+  background: rgba(230, 230, 230, 0.4);
+}
+
+.dialog:hover {
+  cursor: default;
+}
+
+.dialog::backdrop {
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.4);
+}
