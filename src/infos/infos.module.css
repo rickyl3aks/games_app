@@ -1,0 +1,13 @@
+.container {
+  color: black;
+}
+
+.items {
+  border-radius: 0.5rem;
+}
+
+p {
+  display: flex;
+  color: black;
+  justify-content: space-between;
+}

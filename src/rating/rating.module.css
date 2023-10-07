@@ -1,0 +1,22 @@
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.ratingText {
+  flex: 1; /* Take up remaining space */
+}
+
+.starContainer {
+  display: flex;
+}
+
+.star {
+  font-size: 2rem;
+  color: gold;
+}
+
+.starEmpty {
+  font-size: 2rem;
+  color: #ddd;
+}
