@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from "react";
-import "./search.css";
+import style from "./search.module.css";
 import { GameSearch } from "../API/searchAPI";
 
 const Search = ({ onSearch }: { onSearch: any }) => {
-  const [searchInput, setSearchInput] = useState<string>();
+  const [searchInput, setSearchInput] = useState("");
   const { data, isLoading, isError } = GameSearch(searchInput);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,12 +23,13 @@ const Search = ({ onSearch }: { onSearch: any }) => {
   const search = () => {
     if (!isLoading && !isError) {
       onSearch(data.results);
+      setSearchInput("");
     }
   };
 
   return (
-    <div className="inputContainer">
-      <input onChange={handleChange} onKeyDown={handleKeyDown}></input>
+    <div className={style.inputContainer}>
+      <input className={style.input} placeholder="Search Games" onChange={handleChange} value={searchInput} onKeyDown={handleKeyDown}></input>
       <button onClick={handleClick}>search</button>
     </div>
   );

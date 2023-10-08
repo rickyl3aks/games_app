@@ -1,0 +1,28 @@
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 40px;
+}
+
+.input {
+  color: white;
+  background-color: rgb(53, 48, 48);
+  text-align: left;
+  margin: 1rem;
+  border: none;
+  height: 40px;
+  border-radius: 24px;
+  padding-left: 20px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:hover {
+  background-color: wheat;
+  color: black;
+  border: none;
+  text-align: left;
+}
