@@ -18,6 +18,7 @@ export const Games = () => {
     if (!isLoading && !isError) {
       setFilteredData(data.results);
       setShowButtons(true);
+      setPrevFilteredData(data.results);
     }
   }, [data, isLoading, isError]);
 
@@ -26,18 +27,13 @@ export const Games = () => {
   }
 
   const handleSearchData = (searchedData: string) => {
-    if (!searchedData) {
-      setPrevFilteredData(filteredData);
-    }
     setFilteredData(searchedData);
     setShowButtons(false);
   };
 
   const handleBackToPrevious = () => {
-    if (prevFilteredData) {
-      setFilteredData(prevFilteredData);
-      setShowButtons(true);
-    }
+    setFilteredData(prevFilteredData);
+    setShowButtons(true);
   };
 
   return (
