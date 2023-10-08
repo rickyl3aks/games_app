@@ -10,6 +10,8 @@ import CloseIcon from "../closeIcon/closeIcon";
 const GameData = ({ game }: { game: mapping }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
+  const missingImg = require("../imgNotFound/img.png");
+
   return (
     <div>
       <div className={style.items} onClick={() => dialogRef.current?.showModal()}>
@@ -23,7 +25,7 @@ const GameData = ({ game }: { game: mapping }) => {
             className={style.img}
             style={{ borderRadius: "0.5rem 0.5rem 0 0 " }}
             loader={<Loading />}
-            unloader={<img src="/img.png" width={300} height={180} alt="img-not-found"></img>}
+            unloader={<img src={missingImg} width={300} height={180} alt="img-not-found"></img>}
           />
         </div>
         <div className={style.infos}>

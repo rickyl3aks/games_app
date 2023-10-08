@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { GameApi } from "../API/api";
 import { mapping } from "./models";
-import "./games.css";
+import style from "./games.module.css";
 import GameData from "../gameData/GameData";
 import Search from "../search/search";
 import GameCount from "../gameCount/gameCount";
@@ -26,7 +26,9 @@ export const Games = () => {
   }
 
   const handleSearchData = (searchedData: string) => {
-    setPrevFilteredData(filteredData);
+    if (!searchedData) {
+      setPrevFilteredData(filteredData);
+    }
     setFilteredData(searchedData);
     setShowButtons(false);
   };
@@ -40,12 +42,12 @@ export const Games = () => {
 
   return (
     <div>
-      <h1 className="title">Game app</h1>
+      <h1 className={style.title}>Game app</h1>
       <Search onSearch={handleSearchData} />
       {showButtons ? (
-        <div className="btn-container">
-          <button onClick={() => setCount(count === 1 ? 1 : count - 1)} className="arrow previous"></button>
-          <button onClick={() => setCount(count + 1)} className="arrow next"></button>
+        <div className={style.btnContainer}>
+          <button onClick={() => setCount(count === 1 ? 1 : count - 1)} className={style.arrowPrevious}></button>
+          <button onClick={() => setCount(count + 1)} className={style.arrowNext}></button>
         </div>
       ) : (
         <GameCount backToPrevious={handleBackToPrevious} />
@@ -53,7 +55,7 @@ export const Games = () => {
       {isLoading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="container">
+        <div className={style.container}>
           {filteredData
             ?.filter((game: any) => game.released)
             .sort((a: any, b: any) => b.released.substring(0, 4) - a.released.substring(0, 4))

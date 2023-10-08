@@ -8,6 +8,9 @@
 .title {
   text-align: center;
   color: white;
+  font-size: 50px;
+  line-height: 74px;
+  font-weight: 700;
 }
 
 .infos {
@@ -16,14 +19,15 @@
 
 /* arrow */
 
-.btn-container {
+.btnContainer {
   display: flex;
   justify-content: space-between;
   width: 15rem;
   margin: 2rem auto;
 }
 
-.arrow {
+.arrowNext,
+.arrowPrevious {
   cursor: pointer;
   position: relative;
   width: 4rem;
@@ -41,10 +45,10 @@
   }
 }
 
-.previous::before,
-.previous::after,
-.next::before,
-.next::after {
+.arrowPrevious::before,
+.arrowPrevious::after,
+.arrowNext::before,
+.arrowNext::after {
   content: "";
   position: absolute;
   width: 35%;
@@ -54,22 +58,22 @@
   transition: all 0.2s linear;
 }
 
-.previous::before {
+.arrowPrevious::before {
   top: 60%;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.previous::after {
+.arrowPrevious::after {
   top: 42%;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.next::before {
+.arrowNext::before {
   top: 60%;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.next::after {
+.arrowNext::after {
   top: 42%;
   transform: translate(-50%, -50%) rotate(45deg);
 }

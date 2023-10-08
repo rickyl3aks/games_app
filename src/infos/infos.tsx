@@ -1,10 +1,11 @@
+import Description from "../description/description";
 import GetTime from "../getTime/getTime";
 import { Images } from "../images/images";
 import Rating from "../rating/rating";
 import style from "./infos.module.css";
 
 export const Infos = ({ game, img }: any) => {
-  const { name, genres, released: date, rating } = game;
+  const { name, genres, released: date, rating, id } = game;
 
   return (
     <div style={{ color: "grey", margin: "0rem 0.5rem" }}>
@@ -37,6 +38,9 @@ export const Infos = ({ game, img }: any) => {
           </p>
           <div>
             <Rating star={rating} />
+          </div>
+          <div>
+            <Description gameId={id} />
           </div>
         </div>
       )}
