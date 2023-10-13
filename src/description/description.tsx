@@ -1,5 +1,7 @@
 import { GetInfo } from "../API/getInfo";
 
+import style from "./description.module.css";
+
 interface Game {
   id: number;
   slug: string;
@@ -148,8 +150,8 @@ const Description = ({ gameId }: { gameId: string }) => {
   return (
     <div>
       {description && (
-        <details>
-          <summary>About...</summary>
+        <details className={style.details}>
+          <summary className={style.summary}>About...</summary>
           <div dangerouslySetInnerHTML={{ __html: description ?? "no info" }}></div>
         </details>
       )}

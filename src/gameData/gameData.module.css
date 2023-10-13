@@ -48,16 +48,16 @@
 }
 
 .dialog::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
 }
 
 .dialog::-webkit-scrollbar-thumb {
-  background-color: rgba(133, 131, 125, 0.6);
+  background-color: #d6dee1;
   border-radius: 10px;
 }
 
 .dialog::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(133, 131, 125, 0.6);
+  background-color: #a8bbbf;
 }
 
 .dialog:hover {

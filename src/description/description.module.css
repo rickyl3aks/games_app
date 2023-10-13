@@ -1,0 +1,7 @@
+.details {
+  display: inline-block;
+}
+
+.summary:hover {
+  cursor: pointer;
+}
