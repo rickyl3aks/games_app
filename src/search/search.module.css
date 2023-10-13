@@ -1,5 +1,6 @@
 .inputContainer {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   padding: 24px 40px;
@@ -7,6 +8,7 @@
 
 .input {
   color: white;
+  width: 20rem;
   background-color: rgb(53, 48, 48);
   text-align: left;
   margin: 1rem;
@@ -14,15 +16,17 @@
   height: 40px;
   border-radius: 24px;
   padding-left: 20px;
+  transition: all 0.2s linear;
 }
 
 .input:focus {
   outline: none;
+  transition: all 0.2s linear;
 }
 
+button:hover,
 .input:hover {
   background-color: wheat;
+  transition: all 0.2s linear;
   color: black;
-  border: none;
-  text-align: left;
 }

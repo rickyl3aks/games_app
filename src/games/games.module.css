@@ -32,17 +32,9 @@
   position: relative;
   width: 4rem;
   height: 4rem;
-  border: solid 2px #999;
   border-radius: 100%;
   z-index: 1;
   transition: all 0.2s linear;
-  &:hover {
-    border: solid 4px #777;
-    &:after,
-    &:before {
-      background: #777;
-    }
-  }
 }
 
 .arrowPrevious::before,

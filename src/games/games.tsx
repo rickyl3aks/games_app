@@ -42,8 +42,8 @@ export const Games = () => {
       <Search onSearch={handleSearchData} />
       {showButtons ? (
         <div className={style.btnContainer}>
-          <button onClick={() => setCount(count === 1 ? 1 : count - 1)} className={style.arrowPrevious}></button>
-          <button onClick={() => setCount(count + 1)} className={style.arrowNext}></button>
+          <button title="Previous page" onClick={() => setCount(count === 1 ? 1 : count - 1)} className={style.arrowPrevious}></button>
+          <button title="Next page" onClick={() => setCount(count + 1)} className={style.arrowNext}></button>
         </div>
       ) : (
         <GameCount backToPrevious={handleBackToPrevious} />
