@@ -29,7 +29,7 @@ const Search = ({ onSearch }: { onSearch: any }) => {
 
   return (
     <div className={style.inputContainer}>
-      <input className={style.input} placeholder="Search games" onChange={handleChange} value={searchInput} onKeyDown={handleKeyDown}></input>
+      <input name="search" className={style.input} placeholder="Search games" onChange={handleChange} value={searchInput} onKeyDown={handleKeyDown}></input>
       <button className={style.btn} onClick={handleClick}>
         search
       </button>

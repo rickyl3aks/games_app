@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  padding: 10px 0px;
+  font-weight: bold;
+}
+
+.footer > a {
+  color: #333;
+}

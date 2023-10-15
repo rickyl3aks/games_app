@@ -23,7 +23,7 @@ export const Games = () => {
   }, [data, isLoading, isError]);
 
   if (isError) {
-    return <div>There has been an error</div>;
+    return <div style={{ color: "white" }}>There has been an error</div>;
   }
 
   const handleSearchData = (searchedData: string) => {
@@ -38,7 +38,7 @@ export const Games = () => {
 
   return (
     <div>
-      <h1 className={style.title}>Game app</h1>
+      <h1 className={style.title}>Game Hub</h1>
       <Search onSearch={handleSearchData} />
       {showButtons ? (
         <div className={style.btnContainer}>

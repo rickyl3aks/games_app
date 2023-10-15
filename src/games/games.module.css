@@ -6,11 +6,36 @@
 }
 
 .title {
-  text-align: center;
-  color: white;
-  font-size: 50px;
-  line-height: 74px;
+  position: relative;
+  font-size: 36px;
   font-weight: 700;
+  top: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  background-color: #000;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.title:before,
+.title:after {
+  background-color: #c50000;
+  position: absolute;
+  content: "";
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  bottom: 25px;
+}
+.title:before {
+  left: -30px;
+}
+.title:after {
+  right: -30px;
 }
 
 .infos {
@@ -43,8 +68,8 @@
 .arrowNext::after {
   content: "";
   position: absolute;
-  width: 35%;
-  height: 10%;
+  width: 25%;
+  height: 5%;
   background: #999;
   z-index: 2;
   transition: all 0.2s linear;
