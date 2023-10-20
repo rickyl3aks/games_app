@@ -5,6 +5,12 @@
   grid-gap: 2rem;
 }
 
+.rawg > a {
+  margin-left: 1rem;
+  color: whitesmoke;
+  font-size: 1rem;
+}
+
 .title {
   position: relative;
   font-size: 36px;

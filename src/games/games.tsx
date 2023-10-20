@@ -1,26 +1,39 @@
 import { useEffect, useState } from "react";
-import { GameApi } from "../API/api";
 import { mapping } from "./models";
 import style from "./games.module.css";
 import GameData from "../gameData/GameData";
 import Search from "../search/search";
 import GameCount from "../gameCount/gameCount";
+import { GameApi } from "../API/APIRequest";
 
 export const Games = () => {
   const [count, setCount] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState<string | null>(null);
   const [filteredData, setFilteredData] = useState<any>();
   const [prevFilteredData, setPrevFilteredData] = useState();
-
   const [showButtons, setShowButtons] = useState(true);
-  const { data, isLoading, isError } = GameApi(count);
 
   useEffect(() => {
-    if (!isLoading && !isError) {
-      setFilteredData(data.results);
-      setShowButtons(true);
-      setPrevFilteredData(data.results);
-    }
-  }, [data, isLoading, isError]);
+    const game = async () => {
+      setIsLoading(true);
+      try {
+        const data = await GameApi(count);
+        if (data.results) {
+          setFilteredData(data.results);
+          setShowButtons(true);
+          setPrevFilteredData(data.results);
+          setIsError(null);
+        }
+      } catch (error) {
+        const typedError = error as Error;
+        setIsError(typedError.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    game();
+  }, [count]);
 
   if (isError) {
     return <div style={{ color: "white" }}>There has been an error</div>;
@@ -38,6 +51,12 @@ export const Games = () => {
 
   return (
     <div>
+      <h1 className={style.rawg}>
+        {" "}
+        <a href="https://api.rawg.io/docs/" target="_blank" rel="noopener noreferrer">
+          Supported by Rawg
+        </a>
+      </h1>
       <h1 className={style.title}>Game Hub</h1>
       <Search onSearch={handleSearchData} />
       {showButtons ? (

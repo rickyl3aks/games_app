@@ -1,6 +1,7 @@
-import { GetInfo } from "../API/getInfo";
+import { useState } from "react";
 
 import style from "./description.module.css";
+import { GetInfo } from "../API/APIRequest";
 
 interface Game {
   id: number;
@@ -9,7 +10,7 @@ interface Game {
   name_original: string;
   description: string;
   metacritic: number;
-  metacritic_platforms: any[]; // You can define a proper type for platforms
+  metacritic_platforms: any[];
   released: string;
   tba: boolean;
   updated: string;
@@ -133,28 +134,38 @@ interface Game {
 }
 
 const Description = ({ gameId }: { gameId: string }) => {
-  const { data, isLoading, isError } = GetInfo(gameId);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsloading] = useState(false);
+  const [info, setInfo] = useState<any>();
 
-  const typeData: Game = data;
-
-  const { description } = typeData;
-
-  if (isError) {
-    return <p>There has been an error...</p>;
-  }
-
-  if (isLoading) {
-    return <p>loading...</p>;
-  }
+  const handleClick = async (gameId: string) => {
+    setIsloading(true);
+    const data = await GetInfo(gameId);
+    if (data !== null) {
+      setIsOpen(true);
+      const typeData: Game = data;
+      const { description } = typeData;
+      setInfo(description);
+      setIsloading(false);
+    }
+  };
 
   return (
     <div>
-      {description && (
-        <details className={style.details}>
-          <summary className={style.summary}>About...</summary>
-          <div dangerouslySetInnerHTML={{ __html: description ?? "no info" }}></div>
-        </details>
-      )}
+      <details open={isOpen} className={style.details}>
+        <summary onClick={() => handleClick(gameId)} className={style.summary}>
+          About...
+        </summary>
+        {isLoading ? (
+          <div className={style.loader}>
+            <div className={style.dot}></div>
+            <div className={style.dot}></div>
+            <div className={style.dot}></div>
+          </div>
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: info ?? "no info" }}></div>
+        )}{" "}
+      </details>
     </div>
   );
 };
