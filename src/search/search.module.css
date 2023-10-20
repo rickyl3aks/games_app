@@ -6,9 +6,38 @@
   padding: 24px 40px;
 }
 
+.inner {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.circle {
+  position: absolute;
+  right: 30px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #666a6d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle:hover {
+  background-color: #818588;
+}
+
+.closeIcon {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .input {
   color: white;
-  width: 20rem;
+  width: 15rem;
   background-color: rgb(53, 48, 48);
   text-align: left;
   margin: 1rem;
