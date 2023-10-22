@@ -5,6 +5,8 @@ import GameData from "../gameData/GameData";
 import Search from "../search/search";
 import GameCount from "../gameCount/gameCount";
 import { GameApi } from "../API/APIRequest";
+import { useDispatch, useSelector } from "react-redux";
+import { setGameData } from "../redux/features/gameDataSlice";
 
 export const Games = () => {
   const [count, setCount] = useState(1);
@@ -14,12 +16,23 @@ export const Games = () => {
   const [prevFilteredData, setPrevFilteredData] = useState();
   const [showButtons, setShowButtons] = useState(true);
 
+  const dispatch = useDispatch();
+  const dataGame = useSelector((state: any) => state.gameData);
+
   useEffect(() => {
-    const game = async () => {
+    const fetchData = async () => {
       setIsLoading(true);
+      if (dataGame && dataGame.hasOwnProperty(count)) {
+        const gameResult = dataGame[count];
+        setFilteredData(gameResult);
+        setPrevFilteredData(gameResult);
+        setIsLoading(false);
+        return;
+      }
       try {
         const data = await GameApi(count);
         if (data.results) {
+          dispatch(setGameData({ [count]: data.results }));
           setFilteredData(data.results);
           setShowButtons(true);
           setPrevFilteredData(data.results);
@@ -32,8 +45,8 @@ export const Games = () => {
         setIsLoading(false);
       }
     };
-    game();
-  }, [count]);
+    fetchData();
+  }, [count, dataGame, dispatch]);
 
   if (isError) {
     return <div style={{ color: "white" }}>There has been an error</div>;

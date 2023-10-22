@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import style from "./description.module.css";
 import { GetInfo } from "../API/APIRequest";
+import { useDispatch, useSelector } from "react-redux";
+import { setInfoData } from "../redux/features/infoData";
 
 interface Game {
   id: number;
@@ -138,13 +140,23 @@ const Description = ({ gameId }: { gameId: string }) => {
   const [isLoading, setIsloading] = useState(false);
   const [info, setInfo] = useState<any>();
 
+  const dispatch = useDispatch();
+  const infoGame = useSelector((state: any) => state.infoData);
+
   const handleClick = async (gameId: string) => {
     setIsloading(true);
+    if (infoGame && infoGame.hasOwnProperty(gameId)) {
+      const infoResult = infoGame[gameId];
+      setInfo(infoResult);
+      setIsloading(false);
+      return;
+    }
     const data = await GetInfo(gameId);
     if (data !== null) {
       setIsOpen(true);
       const typeData: Game = data;
       const { description } = typeData;
+      dispatch(setInfoData({ [gameId]: description }));
       setInfo(description);
       setIsloading(false);
     }
