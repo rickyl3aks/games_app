@@ -7,6 +7,7 @@ import GameCount from "../gameCount/gameCount";
 import { GameApi } from "../API/APIRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { setGameData } from "../redux/features/gameDataSlice";
+import Footer from "../footer/footer";
 
 export const Games = () => {
   const [count, setCount] = useState(1);
@@ -74,8 +75,12 @@ export const Games = () => {
       <Search onSearch={handleSearchData} />
       {showButtons ? (
         <div className={style.btnContainer}>
-          <button title="Previous page" onClick={() => setCount(count === 1 ? 1 : count - 1)} className={style.arrowPrevious}></button>
-          <button title="Next page" onClick={() => setCount(count + 1)} className={style.arrowNext}></button>
+          <button
+            title={`${count === 1 ? "" : "Previous page"}`}
+            onClick={() => setCount((prevCount: number) => (prevCount === 1 ? 1 : prevCount - 1))}
+            className={count === 1 ? style.notAllow : style.arrowPrevious}
+          ></button>
+          <button title="Next page" onClick={() => setCount((nextCount: number) => nextCount + 1)} className={style.arrowNext}></button>
         </div>
       ) : (
         <GameCount backToPrevious={handleBackToPrevious} />
@@ -83,14 +88,17 @@ export const Games = () => {
       {isLoading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className={style.container}>
-          {filteredData
-            ?.filter((game: any) => game.released)
-            .sort((a: any, b: any) => b.released.substring(0, 4) - a.released.substring(0, 4))
-            .map((game: mapping) => (
-              <GameData key={game.id} game={game} />
-            ))}
-        </div>
+        <>
+          <div className={style.container}>
+            {filteredData
+              ?.filter((game: any) => game.released)
+              .sort((a: any, b: any) => b.released.substring(0, 4) - a.released.substring(0, 4))
+              .map((game: mapping) => (
+                <GameData key={game.id} game={game} />
+              ))}
+          </div>
+          <Footer />
+        </>
       )}
     </div>
   );
